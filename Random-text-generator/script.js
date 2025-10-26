@@ -102,8 +102,9 @@ const quotes = [
   "Success is the sum of small efforts repeated day in and day out.",
 ];
 
-const heading = document.querySelector("h1");
 const button = document.querySelector("button");
+const heading = document.querySelector("h1");
+
 button.addEventListener("click", () => {
   const index = Math.floor(Math.random() * 20);
   heading.textContent = quotes[index];
