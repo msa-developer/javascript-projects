@@ -1,24 +1,30 @@
 button {
   padding: 20px;
-  cursor: pointer;
+  border: 2px solid black;
+  color: white;
 }
 
 #red {
   background-color: red;
 }
 
-#blue {
-  background-color: blue;
+#yellow {
+  background-color: yellow;
+  color: black;
 }
 
 #green {
   background-color: green;
 }
 
+#black {
+  background-color: black;
+}
+
 #orange {
   background-color: orange;
 }
 
-#yellow {
-  background-color: yellow;
+#salmon {
+  background-color: salmon;
 }
