@@ -1,5 +1,8 @@
-const buttonContainer = document.querySelector(".buttonContainer");
+const buttons = document.querySelectorAll("button");
 
-buttonContainer.addEventListener("click", (e) => {
-  document.body.style.backgroundColor = e.target.className;
-});
+buttons.forEach((btn) =>
+  btn.addEventListener(
+    "click",
+    (e) => (document.body.style.backgroundColor = e.target.id),
+  ),
+);

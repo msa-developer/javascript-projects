@@ -1,34 +1,31 @@
-body {
-  height: 100%;
-  width: 100%;
-  box-sizing: border-box;
-  display: grid;
-  place-content: center;
-}
-
-.buttonContainer {
-  background-color: white;
-  width: 500px;
-  height: 500px;
-  border: 2px solid black;
-  display: grid;
-  place-content: center;
-  grid-template-columns: 100px 100px 100px;
-  gap: 10px;
-}
-
 button {
-  padding: 10px;
+  padding: 20px;
+  border: 2px solid black;
+  color: white;
+  cursor: pointer;
 }
 
-.green {
+#red {
+  background-color: red;
+}
+
+#yellow {
+  background-color: yellow;
+  color: black;
+}
+
+#green {
   background-color: green;
 }
 
-.blue {
-  background-color: blue;
+#black {
+  background-color: black;
 }
 
-.orange {
+#orange {
   background-color: orange;
+}
+
+#salmon {
+  background-color: salmon;
 }
