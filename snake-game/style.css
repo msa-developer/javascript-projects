@@ -6,10 +6,13 @@
 
 :root {
   --bg-primary-colors: #0c0c0c;
+  --text-color: #ffffff;
 }
 
 html,
 body {
   width: 100%;
   height: 100%;
+  background-color: var(--bg-primary-colors);
+  color: var(--text-color);
 }
