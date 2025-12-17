@@ -50,8 +50,8 @@ main {
 
 .board {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(20px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(30px, 1fr));
   border: 1px solid white;
   flex-grow: 1;
 }
@@ -59,5 +59,5 @@ main {
 .block {
   height: 20px;
   width: 20px;
-  border: 1px solid white;
+  border: 1px solid #bbcb64;
 }
