@@ -7,6 +7,7 @@
 :root {
   --bg-primary-colors: #0c0c0c;
   --text-color: #ffffff;
+  --padding: 23px;
 }
 
 html,
@@ -15,4 +16,28 @@ body {
   height: 100%;
   background-color: var(--bg-primary-colors);
   color: var(--text-color);
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+}
+
+.information {
+  padding: 23px;
+}
+
+.info {
+  padding: 3px;
+  border: 1px solid white;
+  margin: 23px;
+  display: flex;
+  justify-content: space-around;
 }
