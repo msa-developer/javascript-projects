@@ -43,7 +43,6 @@ main {
 
 .info {
   padding: 3px;
-  border: 1px solid white;
   margin: 23px;
   display: flex;
   justify-content: space-around;
