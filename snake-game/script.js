@@ -31,4 +31,8 @@ for (let row = 0; row < rows; row++) {
   }
 }
 
-const renderSnake = () => {};
+const renderSnake = () => {
+  snake.forEach((item) => {
+    console.log(item);
+  });
+};
