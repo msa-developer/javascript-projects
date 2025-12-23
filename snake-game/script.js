@@ -6,6 +6,7 @@ const blockWidth = 80;
 const cols = Math.floor(board.clientWidth / blockWidth);
 const rows = Math.floor(board.clientHeight / blockHeight);
 const blocks = [];
+let direction = "left";
 const snake = [
   {
     x: 1,
@@ -33,6 +34,13 @@ for (let row = 0; row < rows; row++) {
 
 const renderSnake = () => {
   snake.forEach((item) => {
-    console.log(item);
+    console.log(blocks[`${item.x}-${item.y}`].classList.add("fill"));
   });
 };
+
+setInterval(() => {
+  let snakeHead = null;
+  if (direction === "left") {
+  }
+  renderSnake();
+}, 300);
