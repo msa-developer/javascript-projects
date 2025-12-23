@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background-color: black;
+  --text-color: white;
+  --margin-top: 22px;
+}
+
+html,
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+header {
+  margin: var(--margin-top);
+  display: flex;
+  justify-content: space-around;
+}
