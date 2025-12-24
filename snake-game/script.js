@@ -23,10 +23,7 @@ for (let row = 0; row < rows; row++) {
 }
 
 const renderSnake = () => {
-  snakeArr.forEach((block) => {
-    block.appendChild("snake");
-    console.log(block);
+  snakeArr.forEach((item) => {
+    blocks[`${item.x}-${item.y}`].classList.add("snake");
   });
 };
-
-setInterval(() => {}, 300);
