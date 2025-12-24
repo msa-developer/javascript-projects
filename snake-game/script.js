@@ -11,6 +11,7 @@ const snakeArr = [
   { x: 1, y: 1 },
   { x: 1, y: 2 },
 ];
+let direction = "left";
 
 for (let row = 0; row < rows; row++) {
   for (let column = 0; column < columns; column++) {
@@ -27,3 +28,9 @@ const renderSnake = () => {
     blocks[`${item.x}-${item.y}`].classList.add("snake");
   });
 };
+
+setInterval(() => {
+  if (direction === "left") {
+    renderSnake();
+  }
+}, 300);
