@@ -1,17 +1,16 @@
 const board = document.querySelector(".board");
 
-const rowHeight = 80;
-const columnWidth = 80;
-
-const rows = Math.floor(board.clientHeight / rowHeight);
-const columns = Math.floor(board.clientWidth / columnWidth);
-const blocks = [];
-const snakeArr = [
-  { x: 1, y: 0 },
-  { x: 1, y: 1 },
-  { x: 1, y: 2 },
+const blockHeight = 80;
+const blockWidth = 80;
+const snake = [
+  { x: 0, y: 1 },
+  { x: 0, y: 2 },
+  { x: 0, y: 3 },
 ];
-let direction = "left";
+
+const rows = Math.floor(board.clientWidth / blockWidth);
+const columns = Math.floor(board.clientHeight / blockHeight);
+const blocks = [];
 
 for (let row = 0; row < rows; row++) {
   for (let column = 0; column < columns; column++) {
@@ -24,13 +23,11 @@ for (let row = 0; row < rows; row++) {
 }
 
 const renderSnake = () => {
-  snakeArr.forEach((item) => {
+  snake.forEach((item) => {
     blocks[`${item.x}-${item.y}`].classList.add("snake");
   });
 };
 
 setInterval(() => {
-  if (direction === "left") {
-    renderSnake();
-  }
+  renderSnake();
 }, 300);
