@@ -47,3 +47,7 @@ header {
 .fill {
   background-color: var(--fill-background-color);
 }
+
+.food {
+  background-color: white;
+}
