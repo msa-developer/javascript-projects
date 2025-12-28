@@ -39,8 +39,11 @@ const renderSnake = () => {
 };
 
 setInterval(() => {
-  let snakeHead = null;
+  let head = null;
   if (direction === "left") {
+    head = { x: snake[0].x, y: snake[0].y - 1 };
   }
+  snake.unshift(head);
+  snake.pop();
   renderSnake();
 }, 300);
