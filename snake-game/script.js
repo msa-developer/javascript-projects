@@ -7,6 +7,8 @@ const cols = Math.floor(board.clientWidth / blockWidth);
 const rows = Math.floor(board.clientHeight / blockHeight);
 const blocks = [];
 let direction = "left";
+let intervalId = null;
+
 const snake = [
   {
     x: 0,
@@ -30,7 +32,7 @@ const renderSnake = () => {
   });
 };
 
-setInterval(() => {
+intervalId = setInterval(() => {
   let head = null;
 
   if (direction === "left") {
@@ -52,6 +54,7 @@ setInterval(() => {
 
   if (head.x < 0 || head.y < 0 || head.x >= rows || head.y >= cols) {
     alert("Game Over");
+    clearInterval(intervalId);
   }
 
   renderSnake();
