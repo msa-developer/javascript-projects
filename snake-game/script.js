@@ -2,15 +2,16 @@ const board = document.querySelector(".board");
 
 const blockHeight = 80;
 const blockWidth = 80;
+
+const rows = Math.floor(board.clientHeight / blockHeight);
+const columns = Math.floor(board.clientWidth / blockWidth);
+const blocks = [];
 const snake = [
   { x: 0, y: 1 },
   { x: 0, y: 2 },
   { x: 0, y: 3 },
+  { x: 1, y: 3 },
 ];
-
-const rows = Math.floor(board.clientWidth / blockWidth);
-const columns = Math.floor(board.clientHeight / blockHeight);
-const blocks = [];
 
 for (let row = 0; row < rows; row++) {
   for (let column = 0; column < columns; column++) {
@@ -23,11 +24,5 @@ for (let row = 0; row < rows; row++) {
 }
 
 const renderSnake = () => {
-  snake.forEach((item) => {
-    blocks[`${item.x}-${item.y}`].classList.add("snake");
-  });
+  snake.forEach((item) => blocks[`${item.x}-${item.y}`].classList.add("snake"));
 };
-
-setInterval(() => {
-  renderSnake();
-}, 300);
