@@ -9,10 +9,12 @@ let intervalId = null;
 const blocks = [];
 const snake = [{ x: 4, y: 14 }];
 let direction = "left";
-let food = {
-  x: Math.floor(Math.random() * rows),
-  y: Math.floor(Math.random() * cols),
-};
+let food = [
+  {
+    x: Math.floor(Math.random() * rows),
+    y: Math.floor(Math.random() * cols),
+  },
+];
 
 for (let row = 0; row < rows; row++) {
   for (let col = 0; col < cols; col++) {
@@ -46,7 +48,23 @@ const renderSnake = () => {
   }
 
   if (head.x < 0 || head.y < 0 || head.x >= rows || head.y >= cols) {
-    alert("game over");
+    alert("Game Over");
+  }
+
+  food.forEach((item) => {
+    blocks[`${item.x}-${item.y}`].classList.add("food");
+  });
+
+  if (head.x === food.x || head.y === food.y) {
+    food.forEach((item) => {
+      blocks[`${item.x}-${item.y}`].classList.remove("food");
+    });
+    food = [
+      {
+        x: Math.floor(Math.random() * rows),
+        y: Math.floor(Math.random() * cols),
+      },
+    ];
   }
 
   snake.forEach((item) => {
