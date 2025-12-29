@@ -76,13 +76,13 @@ intervalId = setInterval(() => {
 }, 400);
 
 addEventListener("keydown", (e) => {
-  if (e.key === "ArrowUp") {
+  if (e.key === "ArrowUp" || e.key === "k") {
     direction = "up";
-  } else if (e.key === "ArrowDown") {
+  } else if (e.key === "ArrowDown" || e.key === "j") {
     direction = "down";
-  } else if (e.key === "ArrowLeft") {
+  } else if (e.key === "ArrowLeft" || e.key === "h") {
     direction = "left";
-  } else if (e.key === "ArrowRight") {
+  } else if (e.key === "ArrowRight" || e.key === "l") {
     direction = "right";
   }
 });
