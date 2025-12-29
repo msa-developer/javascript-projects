@@ -1,5 +1,6 @@
 const board = document.querySelector(".board");
 const startButton = document.querySelector(".start-btn");
+const restartButton = document.querySelector(".restart-btn");
 const modal = document.querySelector(".modal");
 
 const blockHeight = 80;
@@ -80,6 +81,8 @@ startButton.addEventListener("click", () => {
     renderSnake();
   }, 300);
 });
+
+const restartGame = () => {};
 
 addEventListener("keydown", (e) => {
   if (e.key === "ArrowUp" || e.key === "k") {

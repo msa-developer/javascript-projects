@@ -73,3 +73,11 @@ header {
   background-color: blue;
   font-size: 22px;
 }
+
+.restart-btn {
+  cursor: pointer;
+  padding: var(--basic-padding);
+  color: white;
+  background-color: blue;
+  font-size: 22px;
+}
