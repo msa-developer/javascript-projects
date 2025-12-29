@@ -9,9 +9,10 @@ const blocks = [];
 const snake = [{ x: 5, y: 12 }];
 let intervalId = null;
 let direction = "left";
-const food = [
-  { x: Math.floor(Math.random() * rows), y: Math.floor(Math.random() * cols) },
-];
+let food = {
+  x: Math.floor(Math.random() * rows),
+  y: Math.floor(Math.random() * cols),
+};
 
 for (let row = 0; row < rows; row++) {
   for (let col = 0; col < cols; col++) {
@@ -25,10 +26,7 @@ for (let row = 0; row < rows; row++) {
 
 const renderSnake = () => {
   let head = null;
-
-  food.forEach((item) => {
-    blocks[`${item.x}-${item.y}`].classList.add("food");
-  });
+  blocks[`${food.x}-${food.y}`].classList.add("food");
 
   if (direction === "left") {
     head = { x: snake[0].x, y: snake[0].y - 1 };
@@ -40,19 +38,16 @@ const renderSnake = () => {
     head = { x: snake[0].x + 1, y: snake[0].y };
   }
 
-  if (head.x === food.x) {
-    food.forEach((item) => {
-      blocks[`${item.x}-${item.y}`].classList.remove("food");
-    });
-    food = [
-      {
-        x: Math.floor(Math.random() * rows),
-        y: Math.floor(Math.random() * cols),
-      },
-    ];
+  if (head.x === food.x && head.y === food.y) {
+    blocks[`${food.x}-${food.y}`].classList.remove("food");
+    food = {
+      x: Math.floor(Math.random() * rows),
+      y: Math.floor(Math.random() * cols),
+    };
+    blocks[`${food.x}-${food.y}`].classList.add("food");
   }
 
-  if (head.x < 0 || head.y < 0 || head.x >= cols || head.y >= rows) {
+  if (head.x < 0 || head.y < 0 || head.x >= rows || head.y >= cols) {
     alert("Game Over");
     clearInterval(intervalId);
   }
