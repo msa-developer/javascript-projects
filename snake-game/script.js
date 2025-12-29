@@ -55,7 +55,7 @@ intervalId = setInterval(() => {
     blocks[`${item.x}-${item.y}`].classList.remove("fill");
   });
 
-  if (head.x === food.x || head.y === food.y) {
+  if (head.x === food.x && head.y === food.y) {
     blocks[`${food.x}-${food.y}`].classList.remove("food");
     food = {
       x: Math.floor(Math.random() * rows),
