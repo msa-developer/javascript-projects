@@ -1,4 +1,6 @@
 const board = document.querySelector(".board");
+const startButton = document.querySelector(".start-btn");
+const modal = document.querySelector(".modal");
 
 const blockHeight = 80;
 const blockWidth = 80;
@@ -32,12 +34,6 @@ for (let row = 0; row < rows; row++) {
 }
 
 const renderSnake = () => {
-  snake.forEach((item) => {
-    blocks[`${item.x}-${item.y}`].classList.add("fill");
-  });
-};
-
-intervalId = setInterval(() => {
   let head = null;
   blocks[`${food.x}-${food.y}`].classList.add("food");
 
@@ -73,8 +69,17 @@ intervalId = setInterval(() => {
     clearInterval(intervalId);
   }
 
-  renderSnake();
-}, 400);
+  snake.forEach((item) => {
+    blocks[`${item.x}-${item.y}`].classList.add("fill");
+  });
+};
+
+startButton.addEventListener("click", () => {
+  modal.style.display = "none";
+  intervalId = setInterval(() => {
+    renderSnake();
+  }, 300);
+});
 
 addEventListener("keydown", (e) => {
   if (e.key === "ArrowUp" || e.key === "k") {

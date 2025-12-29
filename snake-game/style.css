@@ -8,6 +8,7 @@
   --background-color: black;
   --text-color: white;
   --fill-background-color: #696969;
+  --basic-padding: 22px;
 }
 
 html,
@@ -50,4 +51,25 @@ header {
 
 .food {
   background-color: blue;
+}
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+}
+
+.modal {
+  display: grid;
+  place-content: center;
+  position: fixed;
+  top: 0;
+  backdrop-filter: blur(1px);
+}
+
+.start-btn {
+  cursor: pointer;
+  padding: var(--basic-padding);
+  color: white;
+  background-color: blue;
+  font-size: 22px;
 }
