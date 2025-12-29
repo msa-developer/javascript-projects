@@ -22,7 +22,6 @@ main {
   padding: var(--basic-padding);
   display: flex;
   flex-direction: column;
-  width: 100vw;
   height: 100vh;
 }
 
@@ -36,14 +35,14 @@ main header {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   grid-template-rows: repeat(auto-fill, minmax(80px, 1fr));
-  border: 2px solid white;
+  border: 1px solid white;
   flex-grow: 1;
 }
 
 .block {
-  height: 80px;
-  width: 80px;
   border: 1px solid gray;
+  width: 80px;
+  height: 80px;
 }
 
 .snake {

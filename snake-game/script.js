@@ -4,31 +4,27 @@ const blockHeight = 80;
 const blockWidth = 80;
 
 const rows = Math.floor(board.clientHeight / blockHeight);
-const columns = Math.floor(board.clientWidth / blockWidth);
-
+const cols = Math.floor(board.clientWidth / blockWidth);
+let intervalId = null;
 const blocks = [];
-
-const snake = [{ x: 0, y: 14 }];
-
+const snake = [{ x: 4, y: 14 }];
 let direction = "left";
+let food = {
+  x: Math.floor(Math.random() * rows),
+  y: Math.floor(Math.random() * cols),
+};
 
 for (let row = 0; row < rows; row++) {
-  for (let column = 0; column < columns; column++) {
+  for (let col = 0; col < cols; col++) {
     const block = document.createElement("div");
     block.classList.add("block");
     board.appendChild(block);
-    block.innerText = `${row}-${column}`;
-    blocks[`${row}-${column}`] = block;
+    block.textContent = `${row}-${col}`;
+    blocks[`${row}-${col}`] = block;
   }
 }
 
 const renderSnake = () => {
-  snake.forEach((item) => {
-    blocks[`${item.x}-${item.y}`].classList.add("snake");
-  });
-};
-
-setInterval(() => {
   let head = null;
 
   if (direction === "left") {
@@ -40,9 +36,17 @@ setInterval(() => {
       head = { x: item.x, y: item.y + 1 };
     });
   } else if (direction === "up") {
-    head = { x: item.x - 1, y: item.y };
+    snake.forEach((item) => {
+      head = { x: item.x - 1, y: item.y };
+    });
   } else if (direction === "down") {
-    head = { x: item.x + 1, y: item.y };
+    snake.forEach((item) => {
+      head = { x: item.x + 1, y: item.y };
+    });
+  }
+
+  if (head.x < 0 || head.y < 0 || head.x >= rows || head.y >= cols) {
+    alert("game over");
   }
 
   snake.forEach((item) => {
@@ -52,5 +56,23 @@ setInterval(() => {
   snake.unshift(head);
   snake.pop();
 
+  snake.forEach((item) => {
+    blocks[`${item.x}-${item.y}`].classList.add("snake");
+  });
+};
+
+intervalId = setInterval(() => {
   renderSnake();
 }, 300);
+
+addEventListener("keydown", (e) => {
+  if (e.key === "ArrowUp") {
+    direction = "up";
+  } else if (e.key === "ArrowDown") {
+    direction = "down";
+  } else if (e.key === "ArrowRight") {
+    direction = "right";
+  } else if (e.key === "ArrowLeft") {
+    direction = "left";
+  }
+});
