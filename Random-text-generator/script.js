@@ -105,7 +105,6 @@ const quotes = [
 const heading = document.querySelector("h3");
 const button = document.querySelector("button");
 
-button.addEventListener("click", (e) => {
-  const index = Math.floor(Math.random() * 20);
-  heading.innerText = quotes[index];
+button.addEventListener("click", () => {
+  heading.innerText = quotes[Math.floor(Math.random() * quotes.length - 1)];
 });
