@@ -2,6 +2,7 @@ const board = document.querySelector(".board");
 const startButton = document.querySelector(".start-btn");
 const restartButton = document.querySelector(".restart-btn");
 const modal = document.querySelector(".modal");
+const gameOver = document.querySelector(".game-over");
 
 const blockHeight = 80;
 const blockWidth = 80;
@@ -66,8 +67,11 @@ const renderSnake = () => {
   snake.pop();
 
   if (head.x < 0 || head.y < 0 || head.x >= rows || head.y >= cols) {
-    alert("Game Over");
     clearInterval(intervalId);
+    modal.style.display = "grid";
+    startButton.style.display = "none";
+    gameOver.style.display = "block";
+    return;
   }
 
   snake.forEach((item) => {
