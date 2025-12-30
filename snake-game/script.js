@@ -18,10 +18,10 @@ let food = {
   y: Math.floor(Math.random() * cols),
 };
 
-const snake = [
+let snake = [
   {
-    x: 0,
-    y: 15,
+    x: Math.floor(Math.random() * rows),
+    y: Math.floor(Math.random() * cols),
   },
 ];
 
@@ -71,6 +71,7 @@ const renderSnake = () => {
     modal.style.display = "grid";
     startButton.style.display = "none";
     gameOver.style.display = "block";
+    restartButton.addEventListener("click", restartGame);
     return;
   }
 
@@ -86,7 +87,24 @@ startButton.addEventListener("click", () => {
   }, 300);
 });
 
-const restartGame = () => {};
+const restartGame = () => {
+  modal.style.display = "none";
+  blocks[`${food.x}-${food.y}`].classList.remove("food");
+  food = {
+    x: Math.floor(Math.random() * rows),
+    y: Math.floor(Math.random() * cols),
+  };
+  snake = [
+    {
+      x: Math.floor(Math.random() * rows),
+      y: Math.floor(Math.random() * cols),
+    },
+  ];
+
+  intervalId = setInterval(() => {
+    renderSnake();
+  }, 300);
+};
 
 addEventListener("keydown", (e) => {
   if (e.key === "ArrowUp" || e.key === "k") {
