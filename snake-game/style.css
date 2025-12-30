@@ -12,8 +12,8 @@
 
 html,
 body {
-  width: 100%;
   height: 100%;
+  width: 100%;
   background-color: var(--background-color);
   color: var(--text-color);
 }
@@ -36,14 +36,14 @@ main header {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   grid-template-rows: repeat(auto-fill, minmax(80px, 1fr));
-  border: 2px solid white;
+  border: 1px solid white;
   flex-grow: 1;
 }
 
 .block {
-  border: 1px solid gray;
   width: 80px;
   height: 80px;
+  border: 2px solid gray;
 }
 
 .snake {
@@ -52,4 +52,20 @@ main header {
 
 .food {
   background-color: blue;
+}
+
+.start-game {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  backdrop-filter: blur(2px);
+  display: grid;
+  place-content: center;
+}
+
+.start-btn {
+  cursor: pointer;
+  background-color: blue;
+  padding: var(--basic-padding);
+  font-size: 22px;
 }

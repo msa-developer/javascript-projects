@@ -1,13 +1,16 @@
 const board = document.querySelector(".board");
+const startScreen = document.querySelector(".start-game");
+const startButton = document.querySelector(".start-btn");
 
 const blockHeight = 80;
 const blockWidth = 80;
 
 const rows = Math.floor(board.clientHeight / blockHeight);
 const cols = Math.floor(board.clientWidth / blockWidth);
+
+let inervalId = null;
 const blocks = [];
-const snake = [{ x: 5, y: 12 }];
-let intervalId = null;
+const snake = [{ x: 6, y: 12 }];
 let direction = "left";
 let food = {
   x: Math.floor(Math.random() * rows),
@@ -19,13 +22,14 @@ for (let row = 0; row < rows; row++) {
     const block = document.createElement("div");
     block.classList.add("block");
     board.appendChild(block);
-    block.innerText = `${row}-${col}`;
+    block.textContent = `${row}-${col}`;
     blocks[`${row}-${col}`] = block;
   }
 }
 
 const renderSnake = () => {
   let head = null;
+
   blocks[`${food.x}-${food.y}`].classList.add("food");
 
   if (direction === "left") {
@@ -45,11 +49,12 @@ const renderSnake = () => {
       y: Math.floor(Math.random() * cols),
     };
     blocks[`${food.x}-${food.y}`].classList.add("food");
+    snake.unshift(head);
   }
 
   if (head.x < 0 || head.y < 0 || head.x >= rows || head.y >= cols) {
-    alert("Game Over");
-    clearInterval(intervalId);
+    alert("game over");
+    clearInterval(inervalId);
   }
 
   snake.unshift(head);
@@ -63,18 +68,21 @@ const renderSnake = () => {
   });
 };
 
-intervalId = setInterval(() => {
-  renderSnake();
-}, 300);
+startButton.addEventListener("click", () => {
+  startScreen.style.display = "none";
+  inervalId = setInterval(() => {
+    renderSnake();
+  }, 300);
+});
 
 addEventListener("keydown", (e) => {
-  if (e.key === "ArrowLeft" || e.key === "h") {
-    direction = "left";
-  } else if (e.key === "ArrowRight" || e.key === "l") {
-    direction = "right";
-  } else if (e.key === "ArrowUp" || e.key === "k") {
+  if (e.key === "ArrowUp" || e.key === "k") {
     direction = "up";
   } else if (e.key === "ArrowDown" || e.key === "j") {
     direction = "down";
+  } else if (e.key === "ArrowLeft" || e.key === "h") {
+    direction = "left";
+  } else if (e.key === "ArrowRight" || e.key === "l") {
+    direction = "right";
   }
 });
