@@ -3,6 +3,9 @@ const startButton = document.querySelector(".start-btn");
 const restartButton = document.querySelector(".restart-btn");
 const modal = document.querySelector(".modal");
 const gameOver = document.querySelector(".game-over");
+const Score = document.querySelector(".score");
+const HighScore = document.querySelector(".high-score");
+const Time = document.querySelector(".Time");
 
 const blockHeight = 80;
 const blockWidth = 80;
@@ -11,7 +14,12 @@ const cols = Math.floor(board.clientWidth / blockWidth);
 const rows = Math.floor(board.clientHeight / blockHeight);
 const blocks = [];
 let direction = "left";
+let timerId = null;
 let intervalId = null;
+let score = 0;
+let time = `00:00`;
+let highScore = localStorage.getItem("HighScore") || 0;
+HighScore.innerText = highScore;
 
 let food = {
   x: Math.floor(Math.random() * rows),
@@ -61,6 +69,12 @@ const renderSnake = () => {
     };
     blocks[`${food.x}-${food.y}`].classList.add("food");
     snake.unshift(head);
+    score += 10;
+    Score.innerText = score;
+    if (score > HighScore) {
+      highScore = score;
+      localStorage.setItem("HighScore", highScore.toString());
+    }
   }
 
   snake.unshift(head);
@@ -72,6 +86,10 @@ const renderSnake = () => {
     startButton.style.display = "none";
     gameOver.style.display = "block";
     restartButton.addEventListener("click", restartGame);
+    score = 0;
+    time = `00:00`;
+    Time.innerText = time;
+    Score.innerText = score;
     return;
   }
 
@@ -82,6 +100,19 @@ const renderSnake = () => {
 
 startButton.addEventListener("click", () => {
   modal.style.display = "none";
+
+  timerId = setInterval(() => {
+    let [min, sec] = time.split(`:`).map(Number);
+    time = `${min}:${sec}`;
+    if (min > 59) {
+      sec = 0;
+    } else {
+      sec += 1;
+    }
+
+    Time.innerText = time;
+  }, 1000);
+
   intervalId = setInterval(() => {
     renderSnake();
   }, 300);
@@ -89,7 +120,9 @@ startButton.addEventListener("click", () => {
 
 const restartGame = () => {
   modal.style.display = "none";
+  HighScore.innerText = highScore;
   blocks[`${food.x}-${food.y}`].classList.remove("food");
+  clearInterval(timerId);
   food = {
     x: Math.floor(Math.random() * rows),
     y: Math.floor(Math.random() * cols),
