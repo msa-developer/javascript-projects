@@ -14,7 +14,7 @@ const rows = Math.floor(board.clientHeight / blockHeight);
 const cols = Math.floor(board.clientWidth / blockWidth);
 
 let time = `00:00`;
-let hs = null;
+let hs = localStorage.getItem("highScore") || 0;
 let score = 0;
 let snake = [{ x: 6, y: 19 }];
 let gameStartInterval = null;
@@ -51,13 +51,6 @@ const renderSnake = () => {
 
   if (head.x < 0 || head.y < 0 || head.x >= rows || head.y >= cols) {
     clearInterval(gameStartInterval);
-    gameStartInterval = null;
-    if (score > hs) {
-      hs = localStorage.setItem("highScore", score);
-      highScore.innerText = score;
-    }
-    score = 0;
-
     Modal.style.display = "grid";
     startGame.style.display = "none";
     restartGame.style.display = "block";
@@ -98,11 +91,13 @@ startGame.addEventListener("click", () => {
 });
 
 const restartFunc = () => {
-  if (gameStartInterval) {
-    clearInterval(gameStartInterval);
-    gameStartInterval = null;
+  if (score > hs) {
+    hs = score;
+    localStorage.setItem("highScore", score);
+    highScore.innerText = hs;
   }
-
+  score = 0;
+  Score.innerText = 0;
   Modal.style.display = "none";
   restartGame.style.display = "none";
 
