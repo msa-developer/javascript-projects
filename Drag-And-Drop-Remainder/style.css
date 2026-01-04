@@ -7,6 +7,8 @@
 :root {
   --bg-color: black;
   --text-color: white;
+  --nav-padding: 22px;
+  --section-padding: 22px;
 }
 
 html {
@@ -33,4 +35,66 @@ body {
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+nav {
+  padding: var(--nav-padding);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav button {
+  padding: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--text-color);
+  background-color: green;
+  border-radius: 23px;
+}
+
+section {
+  padding: var(--section-padding);
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  gap: 2px;
+}
+
+section .task-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: var(--nav-padding);
+  border: 1px solid white;
+  flex-grow: 1;
+}
+
+section .heading {
+  padding: var(--section-padding);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.task {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: var(--section-padding);
+  border: 1px solid gray;
+}
+
+.task-btn {
+  background-color: red;
+  align-self: flex-end;
+  padding: 12px 12px;
+  cursor: pointer;
+  color: white;
 }
