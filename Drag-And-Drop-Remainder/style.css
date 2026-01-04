@@ -89,6 +89,7 @@ section .heading {
   gap: 3px;
   padding: var(--section-padding);
   border: 1px solid gray;
+  cursor: grab;
 }
 
 .task-btn {
